@@ -1,3 +1,2 @@
 import numpy
 
-print("check")
