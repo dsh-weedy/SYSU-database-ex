@@ -21,5 +21,20 @@ def inquire_usr_order(usr_id):
         where usr_id = %s" %(usr_id)
     
     cursor.execute(sql)
-    result_purchase = cursor.fetchall()
+    result_lease = cursor.fetchall()
 
+    return result_purchase,result_lease
+
+def inquire_car_all():
+    # create connetion and cursor
+    db = connect.connect_db() 
+    cursor = db.cursor() 
+
+    # inquire purchase list
+    sql = "select car_id\
+          from purchase "
+    
+    cursor.execute(sql)
+    result_car_id = cursor.fetchall()
+
+    return result_car_id
