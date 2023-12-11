@@ -35,12 +35,14 @@ try:
 
     sql = '''
         CREATE TABLE `car`  (
+            `image` VARCHAR(50),
             `car_id` INT NOT NULL,
             `price` INT NOT NULL,
             `rent` INT NOT NULL,
             `model` VARCHAR(30) NOT NULL,
             `state` INT NOT NULL,
-            `deposit` INT NOT NULL,
+            `description` VARCHAR(500),
+            `deposit` INT,
             -- 定义复合主键，并使用BTREE索引
          PRIMARY KEY (`car_id`) USING BTREE,
             -- 使用BTREE加速对于dept_no的搜索速度
