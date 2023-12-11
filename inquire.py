@@ -35,6 +35,24 @@ def inquire_usr_order(usr_id):
     # return usr_purchase_id usr_lease_id
     return usr_purchase,usr_lease
 
+
+# inquire all item in car, return car with particular car_id
+def inquire_usr_detail(usr_id):
+    # create connetion and cursor
+    db = connect.connect_db() 
+    cursor = db.cursor() 
+
+    # inquire usr list
+    sql = "select * from usr where usr_id = %s"
+    values = (usr_id)
+    
+    cursor.execute(sql,values)
+    result_usr = cursor.fetchall()
+
+    db.close()
+    return result_usr
+
+
 # inquire all item in car, return car
 def inquire_car_all():
     # create connetion and cursor
@@ -69,23 +87,6 @@ def inquire_car_avlible():
     db.close()
     return result_car_avlible
 
-
-# inquire all item in employees, return emp
-def inquire_emp_all():
-    # create connetion and cursor
-    db = connect.connect_db() 
-    cursor = db.cursor() 
-
-    # inquire emp list
-    sql = "select *\
-          from emp "
-    
-    cursor.execute(sql)
-    result_emp = cursor.fetchall()
-    
-    db.close()
-    return result_emp
-
 # inquire all item in car, return car with particular car_id
 def inquire_car_detail(car_id):
     # create connetion and cursor
@@ -102,21 +103,19 @@ def inquire_car_detail(car_id):
     db.close()
     return result_car
 
-
-# inquire all item in car, return car with particular car_id
-def inquire_usr_detail(usr_id):
+# inquire all item in employees, return emp
+def inquire_emp_all():
     # create connetion and cursor
     db = connect.connect_db() 
     cursor = db.cursor() 
 
-    # inquire usr list
-    sql = "select * from usr where usr_id = %s"
-    values = (usr_id)
+    # inquire emp list
+    sql = "select *\
+          from emp "
     
-    cursor.execute(sql,values)
-    result_usr = cursor.fetchall()
-
+    cursor.execute(sql)
+    result_emp = cursor.fetchall()
+    
     db.close()
-    return result_usr
-
+    return result_emp
 
