@@ -1,7 +1,7 @@
 import pymysql
 import connect
 
-
+# use usr_id to inquire usr_order
 def inquire_usr_order(usr_id):
     # create connetion and cursor
     db = connect.connect_db() 
@@ -25,6 +25,7 @@ def inquire_usr_order(usr_id):
 
     return result_purchase,result_lease
 
+# inquire all item in car, return car_id
 def inquire_car_all():
     # create connetion and cursor
     db = connect.connect_db() 
