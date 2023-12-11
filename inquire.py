@@ -30,13 +30,12 @@ def inquire_car_all():
     db = connect.connect_db() 
     cursor = db.cursor() 
 
-    # inquire purchase list
+    # inquire car list
     sql = "select car_id\
-          from purchase "
+          from car "
     
     cursor.execute(sql)
     result_car_id = cursor.fetchall()
-
     return result_car_id
 
 
