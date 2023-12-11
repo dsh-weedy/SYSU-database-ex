@@ -38,3 +38,6 @@ def inquire_car_all():
     result_car_id = cursor.fetchall()
 
     return result_car_id
+
+
+
