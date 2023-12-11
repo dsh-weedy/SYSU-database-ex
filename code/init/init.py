@@ -8,15 +8,15 @@ try:
     cursor = conn.cursor()
     #创建表的sql
     sql = '''
-        CREATE TABLE `customer`  (
-            `cus_id` INT NOT NULL,
+        CREATE TABLE `user`  (
+            `usr_id` INT NOT NULL,
             `name` VARCHAR(20) NOT NULL,
             `age` INT NOT NULL,
             `email` VARCHAR(30) NOT NULL,
             `password` VARCHAR(30) NOT NULL,
-            `creditcard` VARCHAR(30) NOT NULL,
+            `creditcard` VARCHAR(30),
           -- 定义主键，并使用BTREE索引
-          PRIMARY KEY (`cus_id`) USING BTREE
+          PRIMARY KEY (`usr_id`) USING BTREE
         );
     '''
     cursor.execute(sql)
@@ -52,18 +52,19 @@ try:
     sql = '''
         CREATE TABLE `purchase`  (
             `purchase_id` INT NOT NULL,
-            `cus_id` INT NOT NULL,
+            `usr_id` INT NOT NULL,
             `car_id` INT NOT NULL,
             `emp_id` INT NOT NULL,
             `price` INT NOT NULL,
+            `purchase_data` DATE NOT NULL,
             -- 定义复合主键，并使用BTREE索引
           PRIMARY KEY (`purchase_id`) USING BTREE,
             -- 使用BTREE加速对于dept_no的搜索速度
-          INDEX `cus_id_Btree`(`cus_id`) USING BTREE,
+          INDEX `usr_id_Btree`(`usr_id`) USING BTREE,
           INDEX `car_id_Btree`(`car_id`) USING BTREE,
           INDEX `emp_id_Btree`(`emp_id`) USING BTREE,
-          -- 定义外键约束，外键来自于customer中的cus_id，删除采用级联删除，更新采用RESTRICT
-          CONSTRAINT `purchase_cus` FOREIGN KEY (`cus_id`) REFERENCES `customer` (`cus_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+          -- 定义外键约束，外键来自于user中的usr_id，删除采用级联删除，更新采用RESTRICT
+          CONSTRAINT `purchase_usr` FOREIGN KEY (`usr_id`) REFERENCES `user` (`usr_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
           -- 定义外键约束，外键来自于car中的car_id，删除采用级联删除，更新采用RESTRICT
           CONSTRAINT `purchase_car` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
           -- 定义外键约束，外键来自于employees中的emp_id，删除采用级联删除，更新采用RESTRICT
@@ -75,7 +76,7 @@ try:
     sql = '''
         CREATE TABLE `lease`  (
             `lease_id` INT NOT NULL,
-            `cus_id` INT NOT NULL,
+            `usr_id` INT NOT NULL,
             `car_id` INT NOT NULL,
             `emp_id` INT NOT NULL,
 	        `rent_tot` INT NOT NULL,
@@ -86,11 +87,11 @@ try:
             -- 定义复合主键，并使用BTREE索引
           PRIMARY KEY (`lease_id`) USING BTREE,
           -- 使用BTREE加速对于搜索速度
-          INDEX `cus_id_Btree`(`cus_id`) USING BTREE,
+          INDEX `usr_id_Btree`(`usr_id`) USING BTREE,
           INDEX `car_id_Btree`(`car_id`) USING BTREE,
           INDEX `emp_id_Btree`(`emp_id`) USING BTREE,
           -- 定义外键约束，外键来自于employee中的emp_no，删除采用级联删除，更新采用RESTRICT
-          CONSTRAINT `lease_cus` FOREIGN KEY (`cus_id`) REFERENCES `customer` (`cus_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+          CONSTRAINT `lease_usr` FOREIGN KEY (`usr_id`) REFERENCES `user` (`usr_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
           -- 定义外键约束，外键来自于departments中的dept_no，删除采用级联删除，更新采用RESTRICT
           CONSTRAINT `lease_car` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
           CONSTRAINT `lease_emp` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`) ON DELETE CASCADE ON UPDATE RESTRICT
