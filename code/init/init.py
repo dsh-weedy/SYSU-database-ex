@@ -58,7 +58,7 @@ try:
             `car_id` INT NOT NULL,
             `emp_id` INT NOT NULL,
             `price` INT NOT NULL,
-            `purchase_data` DATE NOT NULL,
+            `purchase_date` INT NOT NULL,
             -- 定义复合主键，并使用BTREE索引
           PRIMARY KEY (`purchase_id`) USING BTREE,
             -- 使用BTREE加速对于dept_no的搜索速度
@@ -82,9 +82,9 @@ try:
             `car_id` INT NOT NULL,
             `emp_id` INT NOT NULL,
 	        `rent_tot` INT NOT NULL,
-	        `begin_date` DATE NOT NULL,
-	        `end_date` DATE NOT NULL,
-	        `return_date` DATE,
+	        `begin_date` INT NOT NULL,
+	        `end_date` INT NOT NULL,
+	        `return_date` INT,
 	        `state` INT NOT NULL,
             -- 定义复合主键，并使用BTREE索引
           PRIMARY KEY (`lease_id`) USING BTREE,
@@ -100,6 +100,18 @@ try:
         );
     '''
     cursor.execute(sql)
+
+    sql = '''
+        CREATE TABLE `global_time`  (
+            `time_global` INT NOT NULL,
+            `global_year` INT NOT NULL,
+            `global_month` INT NOT NULL,
+            `global_day` INT NOT NULL,
+          PRIMARY KEY (`time_global`)
+        );
+    '''
+    cursor.execute(sql)
+
 except:
     print('创建表失败')
 finally:
