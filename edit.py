@@ -11,11 +11,18 @@ def add_car(car_id,price,rent,model,state,deposit):
 
     # add new car to list
     sql = "insert into car values (%s,%s,%s,%s,%s,%s)"
-    cursor.execute(sql,(car_id,price,rent,model,state,deposit))
+    values = (car_id,price,rent,model,state,deposit)
+    
+    affected_rows = cursor.execute(sql, values)
 
     # comit changes
     db.commit()
     db.close()
+
+    # chek affected_rows to check whether add is success
+    if affected_rows > 0:
+        return True
+    return False
 
 # delete particular car_id from car list
 def delete_car(car_id):
