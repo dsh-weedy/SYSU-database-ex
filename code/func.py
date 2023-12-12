@@ -87,6 +87,19 @@ def purchase_car(input_usr_id, input_emp_id, input_car_id, conn):
     conn.commit()
 
 
+def countBegin2End(input_begin_date, input_end_date):
+    # 这个函数用于计算开始日期和结束日期之间相差的天数
+    input_begin_year = input_begin_date // 10000
+    input_begin_month = input_begin_date // 100 % 100
+    input_begin_day = input_begin_date % 100
+
+    input_end_year = input_end_date // 10000
+    input_end_month = input_end_date // 100 % 100
+    input_end_day = input_end_date % 100
+
+    return (input_end_year - input_begin_year) * 365 + (input_end_month - input_begin_month) * 30 + (input_end_day - input_begin_day)
+
+
 def rent_car(input_usr_id, input_emp_id, input_date, input_car_id, input_begin_date, input_end_date, conn):
     # 租车函数，需要输入为：usr_id(租车的用户)、emp_id(负责本次租车的员工)、date(租车的日期)、car_id(租用的车辆)、
     # input_date(租用订单的创建日期)、begin_date(租车的开始日期)、end_date(租车的结束日期)
@@ -99,9 +112,19 @@ def rent_car(input_usr_id, input_emp_id, input_date, input_car_id, input_begin_d
     else:
         input_lease_id = results + 1
 
+    cursor.execute("select rent from sysu_database.car where car_id = '%d'" % input_car_id)
+    now_car_rent = (cursor.fetchall())[0][0]
+
+    dateCount = countBegin2End(input_begin_date, input_end_date)
+    input_rent_tot = now_car_rent * dateCount
+
     sql = '''
         insert into sysu_database.lease(lease_id, usr_id, car_id, emp_id, rent_tot, begin_date, end_date, return_date, state) values(%s, %s, %s, %s, %s, %s, %s, %s, %s)
     '''
 
-    cursor.execute(sql, (input_lease_id, input_usr_id, input_car_id, input_emp_id, ))
+    cursor.execute(sql, (input_lease_id, input_usr_id, input_car_id, input_emp_id, input_rent_tot, input_begin_date, input_end_date, None, 0))
+
+    # 这里暂时不需要将车辆的状态修改为“被租用”，而是等到开始的那一天到来时，顺序遍历订单，选择被租用的车辆
+    # 订单的状态为：0未开始、1进行中、2已结束、3已逾期（逾期的订单需要更新罚款？考虑增加条目）、4被取消（或者可以和2并在一起）
+    conn.commit()
 
