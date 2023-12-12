@@ -1,5 +1,5 @@
 import pymysql
-import connect
+
 
 READY = 1
 RENT = 2
@@ -31,34 +31,6 @@ def inquire_usr_order(db,usr_id):
     # return usr_purchase_id usr_lease_id
     return usr_purchase,usr_lease
 
-# inquire all item in car, return car with particular car_id
-def inquire_usr_detail(db,usr_id):
-    # create cursor
-    cursor = db.cursor() 
-
-    # inquire usr list
-    sql = "select * from usr where usr_id = %d"
-    values = (usr_id)
-    
-    cursor.execute(sql,values)
-    result_usr = cursor.fetchall()
-
-    return result_usr
-
-# inquire all item in car, return car
-def inquire_car_all(db):
-    # create cursor
-    cursor = db.cursor() 
-
-    # inquire car list
-    sql = "select *\
-          from car "
-    
-    cursor.execute(sql)
-    result_car = cursor.fetchall()
-
-    return result_car
-
 # inquire car which is avlible return car_id
 def inquire_car_avlible(db):
     # create cursor
@@ -67,7 +39,7 @@ def inquire_car_avlible(db):
     # inquire car which is avlible
     sql = "select *\
           from car \
-          where state = %d"
+          where state = %s"
     
     values = (READY)
     cursor.execute(sql,values)
@@ -75,48 +47,32 @@ def inquire_car_avlible(db):
 
     return result_car_avlible
 
-# inquire all item in car, return car with particular car_id
-def inquire_car_detail(db,car_id):
+# iniquire all item in table
+def inquire_all(db,table):
     # create cursor
     cursor = db.cursor() 
 
     # inquire emp list
-    sql = "select * from car where car_id = %d"
-    values = (car_id)
+    sql = "select * from " + table
     
-    cursor.execute(sql,values)
-    result_car = cursor.fetchall()
-
-    return result_car
-
-# inquire all item in employees, return emp
-def inquire_emp_all(db):
-    # create cursor
-    cursor = db.cursor() 
-
-    # inquire emp list
-    sql = "select *\
-          from emp "
-    
+    # execute inquiry
     cursor.execute(sql)
-    result_emp = cursor.fetchall()
+    result = cursor.fetchall()
     
-    return result_emp
+    return result
 
 
+# iniquire particular item in table
+def inquire_all(db,table,id):
+    # create cursor
+    cursor = db.cursor() 
 
-
-def connect_db():
-    db = pymysql.connect(host = "localhost", user = "root", password = "123456",database = "sysu_database", port = 3306)
-    return db
-
-
-
-db = connect_db()
-
-a = 1
-result1,result2 = inquire_usr_order(db,a)
-
-
-
-db.close()
+    # inquire emp list
+    sql = "select * from " + table
+    
+    values = (id)
+    # execute inquiry
+    cursor.execute(sql,values)
+    result = cursor.fetchall()
+    
+    return result

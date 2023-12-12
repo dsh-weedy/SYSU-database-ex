@@ -13,9 +13,7 @@ def connect_db():
 db = connect_db()
 
 
-result1,result2 = inquire.inquire_usr_order(db,1)
-
-print(result1)
-print(result2)
+result = inquire.inquire_all(db,"employees")
+print(result)
 
 db.close()
