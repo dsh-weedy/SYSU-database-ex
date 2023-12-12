@@ -1,6 +1,4 @@
 import pymysql
-
-import connect
 import inquire
 
 READY = 1
@@ -43,7 +41,6 @@ def delete_car(db,car_id):
     car_all = inquire.inquire_car_all()
 
     return car_all
-
 
 # return car, edit car state 
 def return_car(db,car_id):

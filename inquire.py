@@ -61,7 +61,6 @@ def inquire_all(db,table):
     
     return result
 
-
 # iniquire particular item in table
 def inquire_particular(db,table,id):
     # create cursor
