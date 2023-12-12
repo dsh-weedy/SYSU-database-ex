@@ -33,7 +33,7 @@ def delete_car(db,car_id):
     cursor = db.cursor() 
 
     # delet car to list
-    sql = "delete from car where car_id = %s"
+    sql = "delete from car where car_id = %d"
     cursor.execute(sql,(car_id))
 
     # comit changes

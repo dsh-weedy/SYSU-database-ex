@@ -13,7 +13,7 @@ def inquire_usr_order(db,usr_id):
     # inquire purchase list
     sql = "select *\
           from purchase \
-          where usr_id = %s"
+          where usr_id = %d"
     
     # inquire
     values = (usr_id)
@@ -40,14 +40,13 @@ def inquire_usr_detail(db,usr_id):
     cursor = db.cursor() 
 
     # inquire usr list
-    sql = "select * from usr where usr_id = %s"
+    sql = "select * from usr where usr_id = %d"
     values = (usr_id)
     
     cursor.execute(sql,values)
     result_usr = cursor.fetchall()
 
     return result_usr
-
 
 # inquire all item in car, return car
 def inquire_car_all(db):
@@ -71,7 +70,7 @@ def inquire_car_avlible(db):
     # inquire car which is avlible
     sql = "select *\
           from car \
-          where state = %s"
+          where state = %d"
     
     values = (READY)
     cursor.execute(sql,values)
@@ -85,7 +84,7 @@ def inquire_car_detail(db,car_id):
     cursor = db.cursor() 
 
     # inquire emp list
-    sql = "select * from car where car_id = %s"
+    sql = "select * from car where car_id = %d"
     values = (car_id)
     
     cursor.execute(sql,values)
