@@ -102,6 +102,15 @@ try:
     cursor.execute(sql)
 
     sql = '''
+        CREATE TABLE `fine` (
+            `lease_id` INT NOT NULL,
+            `fine_value` INT NOT NULL,
+          PRIMARY KEY (`lease_id`)
+        );
+    '''
+    cursor.execute(sql)
+
+    sql = '''
         CREATE TABLE `global_time`  (
             `time_global` INT NOT NULL,
             `global_year` INT NOT NULL,
@@ -109,6 +118,83 @@ try:
             `global_day` INT NOT NULL,
           PRIMARY KEY (`time_global`)
         );
+    '''
+    cursor.execute(sql)
+
+    sql = '''
+        CREATE TRIGGER update_lease_trigger
+        BEFORE UPDATE ON global_time
+        FOR EACH ROW
+        BEGIN
+            DECLARE carState INT;
+            DECLARE leaseCarId INT;
+        
+            -- 获取车辆状态和lease表对应的car_id
+            SELECT car.state, lease.car_id INTO carState, leaseCarId
+            FROM car
+            JOIN lease ON car.car_id = lease.car_id
+            WHERE lease.begin_date = CONCAT(NEW.global_year, NEW.global_month, NEW.global_day) AND lease.state = 0
+            LIMIT 1;
+        
+            -- 根据车辆状态更新lease表
+            UPDATE lease
+            SET state = CASE 
+                WHEN carState = 2 THEN 1  -- 车辆处于空闲状态，订单进行中
+                ELSE 4                     -- 车辆不处于空闲状态，订单取消
+            END
+            WHERE begin_date = CONCAT(NEW.global_year, NEW.global_month, NEW.global_day) AND state = 0;
+        
+            -- 更新car表
+            IF carState = 2 THEN
+                -- 车辆处于空闲状态，将车辆状态置为被租用
+                UPDATE car
+                SET state = 1
+                WHERE car_id = leaseCarId;
+            END IF;
+        END;
+    '''
+    cursor.execute(sql)
+
+    sql = '''
+        CREATE TRIGGER update_lease_status_trigger
+        AFTER UPDATE ON global_time
+        FOR EACH ROW
+        BEGIN
+            UPDATE lease
+            SET state = 3
+            WHERE state = 1
+            AND NEW.global_year * 10000 + NEW.global_month * 100 + NEW.global_day > lease.end_date;
+        END;
+    '''
+    cursor.execute(sql)
+
+    sql = '''
+        CREATE TRIGGER check_return_date_trigger
+        AFTER UPDATE ON lease
+        FOR EACH ROW
+        BEGIN
+            DECLARE fineValue INT;
+            DECLARE rentPerDay INT;
+            DECLARE overDueDay INT;
+			DECLARE tempOverDue INT;
+            IF OLD.return_date IS NULL AND NEW.return_date IS NOT NULL THEN
+                -- 获取租赁车辆的rent值
+                SELECT rent INTO rentPerDay
+                FROM car
+                WHERE car_id = NEW.car_id;
+
+                -- 计算逾期的天数
+                SET tempOverDue = (NEW.return_date - NEW.end_date) / 10000 * 365 + (((NEW.return_date - NEW.end_date) / 100) % 100) * 30 + (NEW.return_date - NEW.end_date) % 100;
+--                 -- 计算罚款值,每天租金的1.5倍率
+				SET overDueDay = GREATEST(0, tempOverDue);
+                SET fineValue = overDueDay * rentPerDay * 1.5;
+                -- 如果是逾期还车，插入fine表中
+                IF fineValue > 0 THEN
+                  INSERT INTO fine (lease_id, fine_value)
+                  VALUES (NEW.lease_id, fineValue);
+                END IF;
+            END IF;
+        END;
     '''
     cursor.execute(sql)
 

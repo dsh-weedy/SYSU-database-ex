@@ -100,7 +100,7 @@ def countBegin2End(input_begin_date, input_end_date):
     return (input_end_year - input_begin_year) * 365 + (input_end_month - input_begin_month) * 30 + (input_end_day - input_begin_day)
 
 
-def rent_car(input_usr_id, input_emp_id, input_date, input_car_id, input_begin_date, input_end_date, conn):
+def rent_car(input_usr_id, input_emp_id, input_car_id, input_begin_date, input_end_date, conn):
     # 租车函数，需要输入为：usr_id(租车的用户)、emp_id(负责本次租车的员工)、date(租车的日期)、car_id(租用的车辆)、
     # input_date(租用订单的创建日期)、begin_date(租车的开始日期)、end_date(租车的结束日期)
     cursor = conn.cursor()
@@ -128,3 +128,34 @@ def rent_car(input_usr_id, input_emp_id, input_date, input_car_id, input_begin_d
     # 订单的状态为：0未开始、1进行中、2已结束、3已逾期（逾期的订单需要更新罚款？考虑增加条目）、4被取消（或者可以和2并在一起）
     conn.commit()
 
+
+def return_car(conn, input_car_id, input_lease_id, input_return_date):
+    # 还车函数
+    # create cursor
+    cursor = conn.cursor()
+
+    cursor.execute("update sysu_database.car set state = 2 where car_id = '%d'" % input_car_id)
+    sql = '''
+        update sysu_database.lease
+        set state = 2, return_date = %s
+        where lease_id = %s
+    '''
+
+    cursor.execute(sql, (input_return_date, input_lease_id))
+
+    conn.commit()
+
+
+def setTime(conn, input_time):
+    # 设置全局时间
+    cursor = conn.cursor()
+
+    input_time_year = input_time // 10000
+    input_time_month = input_time // 100 % 100
+    input_time_day = input_time % 100
+
+    sql = '''
+        insert into sysu_database.global_time(time_global, global_year, global_month, global_day) values (0, %s, %s, %s)
+    '''
+    cursor.execute(sql, (input_time_year, input_time_month, input_time_day))
+    conn.commit()
