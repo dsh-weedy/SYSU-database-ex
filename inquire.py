@@ -11,9 +11,7 @@ def inquire_usr_order(db,usr_id):
     cursor = db.cursor() 
 
     # inquire purchase list
-    sql = "select *\
-          from purchase \
-          where usr_id = %d"
+    sql = "select * from purchase where usr_id = %s"
     
     # inquire
     values = (usr_id)
@@ -32,7 +30,6 @@ def inquire_usr_order(db,usr_id):
 
     # return usr_purchase_id usr_lease_id
     return usr_purchase,usr_lease
-
 
 # inquire all item in car, return car with particular car_id
 def inquire_usr_detail(db,usr_id):
@@ -105,3 +102,21 @@ def inquire_emp_all(db):
     result_emp = cursor.fetchall()
     
     return result_emp
+
+
+
+
+def connect_db():
+    db = pymysql.connect(host = "localhost", user = "root", password = "123456",database = "sysu_database", port = 3306)
+    return db
+
+
+
+db = connect_db()
+
+a = 1
+result1,result2 = inquire_usr_order(db,a)
+
+
+
+db.close()
