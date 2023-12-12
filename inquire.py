@@ -68,8 +68,20 @@ def inquire_all(db,table,id):
     cursor = db.cursor() 
 
     # inquire emp list
-    sql = "select * from " + table
+    sql = "select * from " + table + " where "
     
+    if table == "car":
+        sql += "car_id=%s"
+    elif table == "employees":
+        sql += "emp_id=%s"
+    elif table == "lease":
+        sql += "lease=%s"
+    elif table == "purchase":
+        sql += "purchase_id=%s"
+    elif table == "user":
+        sql += "usr_id=%s"
+    
+
     values = (id)
     # execute inquiry
     cursor.execute(sql,values)

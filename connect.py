@@ -13,7 +13,7 @@ def connect_db():
 db = connect_db()
 
 
-result = inquire.inquire_all(db,"employees")
+result = inquire.inquire_particular(db,"employees",1)
 print(result)
 
 db.close()
