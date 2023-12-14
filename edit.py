@@ -67,10 +67,10 @@ def add_usr(db,name,age,email,password,creditcard):
     print(affected_rows)
     affected_rows += 2
 
-    sql = "insert into user (usr_id,name,age,emai,password,creditcard) values (%d,%s,%d,%s,%s,%s)"%(affected_rows, name, age, email, password, creditcard)
+    sql = "insert into user (usr_id,name,age,email,password,creditcard) values (%s,%s,%s,%s,%s,%s)"
 
-    affected = cursor.execute("insert into user (usr_id,name,age,emai,password,creditcard) values (%d,%s,%d,%s,%s,%s)"%(affected_rows, name, age, email, password, creditcard)
-)
+    values = (affected_rows, name, age, email, password, creditcard)
+    affected = cursor.execute(sql,values)
     # comit changes
     db.commit()
 
