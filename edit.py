@@ -55,3 +55,28 @@ def return_car(db,car_id):
     # comit changes
     db.commit()
 
+
+# create user account
+def add_usr(db,name,age,email,password,creditcard):
+    # create cursor
+    cursor = db.cursor() 
+
+    # delet car to list
+    sql = "select usr_id from user"
+    affected_rows = cursor.execute(sql)
+    print(affected_rows)
+    affected_rows += 2
+
+    sql = "insert into user (usr_id,name,age,emai,password,creditcard) values (%d,%s,%d,%s,%s,%s)"%(affected_rows, name, age, email, password, creditcard)
+
+    affected = cursor.execute("insert into user (usr_id,name,age,emai,password,creditcard) values (%d,%s,%d,%s,%s,%s)"%(affected_rows, name, age, email, password, creditcard)
+)
+    # comit changes
+    db.commit()
+
+    if affected == 0:
+        return 0
+    else :
+        return affected_rows
+
+
