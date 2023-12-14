@@ -48,7 +48,7 @@ def return_car(db,car_id):
     cursor = db.cursor() 
 
     # delet car to list
-    sql = "update car set state = %d where car_id = %d"
+    sql = "update car set state = %s where car_id = %s"
     values = (READY,car_id)
     affected_rows = cursor.execute(sql, values)
 
