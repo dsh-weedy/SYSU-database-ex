@@ -7,6 +7,10 @@ SALE = 3
 
 # use usr_id to inquire usr_purchase_id usr_lease_id
 def inquire_usr_order(db,usr_id):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 
@@ -33,6 +37,10 @@ def inquire_usr_order(db,usr_id):
 
 # inquire car which is avlible return car_id
 def inquire_car_avlible(db):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 
@@ -49,6 +57,10 @@ def inquire_car_avlible(db):
 
 # iniquire all item in table
 def inquire_all(db,table):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 
@@ -63,6 +75,10 @@ def inquire_all(db,table):
 
 # iniquire particular item in table
 def inquire_particular(db,table,id):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 

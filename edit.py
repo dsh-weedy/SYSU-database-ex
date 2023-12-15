@@ -8,6 +8,10 @@ SALE = 3
 
 # add new car to car list
 def add_car(db,image,car_id,price,rent,model,state,description,deposit):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 
@@ -27,6 +31,11 @@ def add_car(db,image,car_id,price,rent,model,state,description,deposit):
 
 # delete particular car_id from car list
 def delete_car(db,car_id):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
+
     # create cursor
     cursor = db.cursor() 
 
@@ -44,6 +53,11 @@ def delete_car(db,car_id):
 
 # return car, edit car state 
 def return_car(db,car_id):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
+    
     # create cursor
     cursor = db.cursor() 
 
@@ -57,6 +71,10 @@ def return_car(db,car_id):
 
 # create user account
 def add_usr(db,name,age,email,password,creditcard):
+    # check whether database is connected
+    is_connect = db.ping()
+    if is_connect == False:
+        print("数据库断开连接")
     # create cursor
     cursor = db.cursor() 
 
