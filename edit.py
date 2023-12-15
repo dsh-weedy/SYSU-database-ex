@@ -55,7 +55,6 @@ def return_car(db,car_id):
     # comit changes
     db.commit()
 
-
 # create user account
 def add_usr(db,name,age,email,password,creditcard):
     # create cursor
