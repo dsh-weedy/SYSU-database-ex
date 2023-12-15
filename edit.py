@@ -12,7 +12,7 @@ def add_car(db,image,car_id,price,rent,model,state,description,deposit):
     cursor = db.cursor() 
 
     # add new car to list
-    sql = "insert into car values (%s,%d,%d,%d,%s,%d,%s,%d)"
+    sql = "insert into car values (%s,%s,%s,%s,%s,%s,%s,%s)"
     values = (image,car_id,price,rent,model,state,description,deposit)
 
     affected_rows = cursor.execute(sql, values)
@@ -31,7 +31,7 @@ def delete_car(db,car_id):
     cursor = db.cursor() 
 
     # delet car to list
-    sql = "delete from car where car_id = %d"
+    sql = "delete from car where car_id = %s"
     cursor.execute(sql,(car_id))
 
     # comit changes
