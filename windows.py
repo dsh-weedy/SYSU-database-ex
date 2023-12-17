@@ -192,7 +192,7 @@ class User_person(QtWidgets.QWidget, Ui_User_person):
                   + '  rent:' + str(i[4]) + '  ' + str(i[5]) + '-' + str(i[6]) \
                   + '  return_date:' + str(i[7]) + '  state:' + str(i[8])
             self.listWidget_2.addItem(tmp)
-            
+
         fine_list = my_func.get_user_finelist(conn, user_id)
         self.listWidget_fine.clear()
         for i in fine_list:
@@ -241,6 +241,12 @@ class Lease(QtWidgets.QWidget, Ui_Lease):
         self.label_time.setText(date[:4] + '/' + date[4:6] + '/' + date[6:])
 
         self.comboBox.clear()
+        self.lineEdit_1_year.clear()
+        self.lineEdit_1_month.clear()
+        self.lineEdit_1_day.clear()
+        self.lineEdit_2_year.clear()
+        self.lineEdit_2_month.clear()
+        self.lineEdit_2_day.clear()
         emp_list = inquire.inquire_all(conn, 'employees')
         self.comboBox.addItems([str(emp[0]) + ' ' + emp[1] for emp in emp_list])
         self.comboBox.setCurrentIndex(0)
@@ -370,6 +376,7 @@ class Manager_check(QtWidgets.QWidget, Ui_Manager_check):
         self.lineEdit.clear()
         self.lineEdit_2.clear()
         self.lineEdit_3.clear()
+        self.listWidget.clear()
 
 
 class Add_car(QtWidgets.QWidget, Ui_Add_car):

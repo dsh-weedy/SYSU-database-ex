@@ -151,6 +151,7 @@ class SYSU_database():
 
     def user_person2main(self):
         self.user_person.close()
+        self.user_main.update_page(conn, self.user_id)
         self.user_main.show()
 
     def buy2user_main(self):
