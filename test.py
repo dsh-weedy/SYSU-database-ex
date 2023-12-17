@@ -1,4 +1,0 @@
-import numpy
-
-hoodja 
-shdoadjas
