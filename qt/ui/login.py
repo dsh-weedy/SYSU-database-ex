@@ -107,3 +107,4 @@ class Ui_Login(object):
         self.label_username.setText(_translate("Login", "用户名"))
         self.label_password.setText(_translate("Login", "密码"))
         self.pushButton_login.setText(_translate("Login", "登录"))
+        self.pushButton_login.setShortcut(_translate("Login", "Return"))
