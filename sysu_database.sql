@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : ConnectToMySQL
+ Source Server         : MySql80
  Source Server Type    : MySQL
  Source Server Version : 80030
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 12/12/2023 18:16:48
+ Date: 20/12/2023 17:01:30
 */
 
 SET NAMES utf8mb4;
@@ -32,80 +32,80 @@ CREATE TABLE `car`  (
   `deposit` int NULL DEFAULT NULL,
   PRIMARY KEY (`car_id`) USING BTREE,
   INDEX `dept_no_Btree`(`model` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of car
 -- ----------------------------
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage2.png', 2, 250000, 3500, ' ZR-125', 2, ' a sleek car for city driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage3.png', 3, 150000, 2000, ' A1-900', 2, ' a compact car for daily commute', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage4.png', 4, 300000, 4000, ' Q7-2000', 2, ' a luxury SUV for family trips', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage5.png', 5, 200000, 3000, ' Civic-X', 2, ' a sporty car for dynamic driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage6.png', 6, 280000, 3800, ' Model3-E', 2, ' an electric car for eco-friendly driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage7.png', 7, 220000, 3200, ' Mustang-GT', 2, ' a classic car for a thrilling experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage8.png', 8, 190000, 2700, ' Altima-SV', 2, ' a comfortable sedan for daily use', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage9.png', 9, 260000, 3600, ' Camaro-SS', 2, ' a powerful car for speed enthusiasts', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage10.png', 10, 170000, 2400, ' Elantra-L', 2, ' a modern car for urban adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage11.png', 11, 310000, 4200, ' XC90-T8', 2, ' a luxurious SUV for family travels', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage12.png', 12, 240000, 3300, ' Outback-X', 2, ' a rugged car for off-road enthusiasts', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage13.png', 13, 200000, 2900, ' Sportage-GT', 2, ' a sporty car for dynamic driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage14.png', 14, 280000, 3700, ' 911-Carrera', 2, ' an iconic car for a luxurious experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage15.png', 15, 180000, 2600, ' Golf-R', 2, ' a versatile car for any occasion', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage16.png', 16, 250000, 3400, ' RX350-L', 2, ' an elegant SUV for a smooth ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage17.png', 17, 150000, 2100, ' CX5-Sport', 2, ' a stylish SUV for a comfortable journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage18.png', 18, 300000, 4100, ' F-PACE-400', 2, ' a sophisticated SUV for a classy ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage19.png', 19, 220000, 3000, ' Yukon-Denali', 2, ' a spacious SUV for family adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage20.png', 20, 190000, 2700, ' 500-Lounge', 2, ' a compact car for city exploration', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage21.png', 21, 260000, 3500, ' MDX-Advance', 2, ' a luxurious SUV for a premium experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage22.png', 22, 170000, 2300, ' Encore-GX', 2, ' a stylish and compact car', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage23.png', 23, 310000, 4000, ' Aviator-Prestige', 2, ' an elegant SUV for a grand ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage24.png', 24, 240000, 3200, ' QX60-Luxe', 2, ' a sleek SUV for a sophisticated journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage25.png', 25, 200000, 2800, ' Outlander-SE', 2, ' a versatile SUV for various terrains', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage26.png', 26, 280000, 3700, ' XT5-Luxury', 2, ' a Cadillac for a luxurious and comfortable ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage27.png', 27, 220000, 3100, ' Wrangler-Rubicon', 2, ' a rugged Jeep for off-road adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage28.png', 28, 190000, 2600, ' Ram-1500-Classic', 2, ' a powerful Ram for heavy-duty tasks', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage29.png', 29, 260000, 3500, ' Discovery-HSE', 2, ' a Land Rover for an adventurous journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage30.png', 30, 180000, 2400, ' Cooper-S', 2, ' an iconic Mini for a fun and compact ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage31.png', 31, 300000, 4100, ' Stelvio-Ti', 2, ' an Alfa Romeo for a sporty and stylish drive', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage32.png', 32, 240000, 3300, ' G80-Elite', 2, ' a luxurious Genesis for a smooth and comfortable ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage33.png', 33, 200000, 2900, ' Fortwo-Passion', 2, ' a compact and efficient Smart for city driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage34.png', 34, 280000, 3800, ' Continental-Flying-Spur', 2, ' a Bentley for a truly luxurious experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage35.png', 35, 220000, 3100, ' Impreza-Limited', 2, ' a reliable Subaru for all-weather driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage36.png', 36, 190000, 2600, ' Explorer-XLT', 2, ' a versatile Ford for family travels', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage37.png', 37, 260000, 3500, ' ModelX-Performance', 2, ' an electric Tesla for a sustainable journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage38.png', 38, 170000, 2300, ' Rav4-XLE', 2, ' a popular Toyota for adventure seekers', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage39.png', 39, 310000, 4000, ' GLC-300', 2, ' an elegant Mercedes for a luxurious drive', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage40.png', 40, 240000, 3200, ' Rogue-SV', 2, ' a comfortable Nissan for a smooth journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage41.png', 41, 200000, 2800, ' Equinox-Premier', 2, ' a modern Chevrolet for urban adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage42.png', 42, 280000, 3700, ' XE-P300', 2, ' a stylish Jaguar for a classy and dynamic drive', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage43.png', 43, 220000, 3000, ' Accord-EX', 2, ' a reliable Honda for daily commuting', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage44.png', 44, 190000, 2700, ' Soul-Exclaim', 2, ' a compact and funky Kia for city exploration', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage45.png', 45, 260000, 3500, ' Tiguan-SEL', 2, ' a versatile Volkswagen for any occasion', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage46.png', 46, 170000, 2400, ' ES-350', 2, ' an elegant Lexus for a luxurious and smooth ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage47.png', 47, 310000, 4100, ' Acadia-Denali', 2, ' a spacious GMC for family adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage48.png', 48, 240000, 3200, ' SantaFe-Limited', 2, ' a modern Hyundai for a comfortable journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage49.png', 49, 200000, 2800, ' Forester-Premium', 2, ' a rugged Subaru for off-road enthusiasts', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage50.png', 50, 280000, 3700, ' Cayenne-S', 2, ' an iconic Porsche for a luxurious experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage51.png', 51, 220000, 3000, ' 3-Series-M340i', 2, ' a sporty BMW for dynamic driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage52.png', 52, 190000, 2600, ' Camry-XSE', 2, ' a reliable Toyota for a smooth ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage53.png', 53, 260000, 3500, ' A4-Premium', 2, ' a sophisticated Audi for a stylish journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage54.png', 54, 170000, 2300, ' CR-V-EX', 2, ' a popular Honda for versatile adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage55.png', 55, 310000, 4000, ' CLA-250', 2, ' a luxurious Mercedes for a premium experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage56.png', 56, 240000, 3200, ' Fusion-SE', 2, ' a modern Ford for urban driving', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage57.png', 57, 200000, 2800, ' Sentra-SR', 2, ' a fuel-efficient Nissan for daily commuting', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage58.png', 58, 280000, 3700, ' Model-S-Long-Range', 2, ' an electric Tesla for a sustainable ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage59.png', 59, 220000, 3100, ' Silverado-LT', 2, ' a powerful Chevrolet for tough tasks', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage60.png', 60, 190000, 2600, ' Kona-SEL', 2, ' a compact Hyundai for city exploration', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage61.png', 61, 260000, 3500, ' Macan-S', 2, ' a sporty Porsche for a thrilling drive', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage62.png', 62, 170000, 2300, ' Optima-EX', 2, ' a stylish Kia for a dynamic journey', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage63.png', 63, 310000, 4000, ' S60-Inscription', 2, ' a sleek Volvo for a comfortable and luxurious ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage64.png', 64, 240000, 3200, ' Crosstrek-Limited', 2, ' an adventurous Subaru for off-road enthusiasts', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage65.png', 65, 200000, 2800, ' Grand-Cherokee-Overland', 2, ' a rugged Jeep for outdoor adventures', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage66.png', 66, 280000, 3700, ' CT5-Luxury', 2, ' a Cadillac for a luxurious and smooth ride', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage67.png', 67, 220000, 3100, ' 2500-Tradesman', 2, ' a powerful Ram for heavy-duty tasks', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage68.png', 68, 190000, 2600, ' Range-Rover-HSE', 2, ' an iconic Land Rover for a grand experience', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage69.png', 69, 260000, 3500, ' Countryman-Cooper-S', 2, ' a Mini for a fun and compact drive', NULL);
-INSERT INTO `car` VALUES ('D:/bin/solied/DB_Ex/CarImage70.png', 70, 180000, 2400, ' Giulia-Ti', 2, ' an Alfa Romeo for a sporty and stylish journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage2.png', 2, 250000, 3500, ' ZR-125', 2, ' a sleek car for city driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage3.png', 3, 150000, 2000, ' A1-900', 2, ' a compact car for daily commute', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage4.png', 4, 300000, 4000, ' Q7-2000', 2, ' a luxury SUV for family trips', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage5.png', 5, 200000, 3000, ' Civic-X', 2, ' a sporty car for dynamic driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage6.png', 6, 280000, 3800, ' Model3-E', 2, ' an electric car for eco-friendly driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage7.png', 7, 220000, 3200, ' Mustang-GT', 2, ' a classic car for a thrilling experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage8.png', 8, 190000, 2700, ' Altima-SV', 2, ' a comfortable sedan for daily use', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage9.png', 9, 260000, 3600, ' Camaro-SS', 2, ' a powerful car for speed enthusiasts', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage10.png', 10, 170000, 2400, ' Elantra-L', 2, ' a modern car for urban adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage11.png', 11, 310000, 4200, ' XC90-T8', 2, ' a luxurious SUV for family travels', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage12.png', 12, 240000, 3300, ' Outback-X', 2, ' a rugged car for off-road enthusiasts', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage13.png', 13, 200000, 2900, ' Sportage-GT', 2, ' a sporty car for dynamic driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage14.png', 14, 280000, 3700, ' 911-Carrera', 2, ' an iconic car for a luxurious experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage15.png', 15, 180000, 2600, ' Golf-R', 2, ' a versatile car for any occasion', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage16.png', 16, 250000, 3400, ' RX350-L', 2, ' an elegant SUV for a smooth ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage2.png', 17, 150000, 2100, ' CX5-Sport', 2, ' a stylish SUV for a comfortable journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage3.png', 18, 300000, 4100, ' F-PACE-400', 2, ' a sophisticated SUV for a classy ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage4.png', 19, 220000, 3000, ' Yukon-Denali', 2, ' a spacious SUV for family adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage5.png', 20, 190000, 2700, ' 500-Lounge', 2, ' a compact car for city exploration', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage6.png', 21, 260000, 3500, ' MDX-Advance', 2, ' a luxurious SUV for a premium experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage7.png', 22, 170000, 2300, ' Encore-GX', 2, ' a stylish and compact car', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage8.png', 23, 310000, 4000, ' Aviator-Prestige', 2, ' an elegant SUV for a grand ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage9.png', 24, 240000, 3200, ' QX60-Luxe', 2, ' a sleek SUV for a sophisticated journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage10.png', 25, 200000, 2800, ' Outlander-SE', 2, ' a versatile SUV for various terrains', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage11.png', 26, 280000, 3700, ' XT5-Luxury', 2, ' a Cadillac for a luxurious and comfortable ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage12.png', 27, 220000, 3100, ' Wrangler-Rubicon', 2, ' a rugged Jeep for off-road adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage13.png', 28, 190000, 2600, ' Ram-1500-Classic', 2, ' a powerful Ram for heavy-duty tasks', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage14.png', 29, 260000, 3500, ' Discovery-HSE', 2, ' a Land Rover for an adventurous journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage15.png', 30, 180000, 2400, ' Cooper-S', 2, ' an iconic Mini for a fun and compact ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage16.png', 31, 300000, 4100, ' Stelvio-Ti', 2, ' an Alfa Romeo for a sporty and stylish drive', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage2.png', 32, 240000, 3300, ' G80-Elite', 2, ' a luxurious Genesis for a smooth and comfortable ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage3.png', 33, 200000, 2900, ' Fortwo-Passion', 2, ' a compact and efficient Smart for city driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage4.png', 34, 280000, 3800, ' Continental-Flying-Spur', 2, ' a Bentley for a truly luxurious experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage5.png', 35, 220000, 3100, ' Impreza-Limited', 2, ' a reliable Subaru for all-weather driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage6.png', 36, 190000, 2600, ' Explorer-XLT', 2, ' a versatile Ford for family travels', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage7.png', 37, 260000, 3500, ' ModelX-Performance', 2, ' an electric Tesla for a sustainable journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage8.png', 38, 170000, 2300, ' Rav4-XLE', 2, ' a popular Toyota for adventure seekers', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage9.png', 39, 310000, 4000, ' GLC-300', 2, ' an elegant Mercedes for a luxurious drive', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage10.png', 40, 240000, 3200, ' Rogue-SV', 2, ' a comfortable Nissan for a smooth journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage11.png', 41, 200000, 2800, ' Equinox-Premier', 2, ' a modern Chevrolet for urban adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage12.png', 42, 280000, 3700, ' XE-P300', 2, ' a stylish Jaguar for a classy and dynamic drive', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage13.png', 43, 220000, 3000, ' Accord-EX', 2, ' a reliable Honda for daily commuting', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage14.png', 44, 190000, 2700, ' Soul-Exclaim', 2, ' a compact and funky Kia for city exploration', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage15.png', 45, 260000, 3500, ' Tiguan-SEL', 2, ' a versatile Volkswagen for any occasion', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage16.png', 46, 170000, 2400, ' ES-350', 2, ' an elegant Lexus for a luxurious and smooth ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage2.png', 47, 310000, 4100, ' Acadia-Denali', 2, ' a spacious GMC for family adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage3.png', 48, 240000, 3200, ' SantaFe-Limited', 2, ' a modern Hyundai for a comfortable journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage4.png', 49, 200000, 2800, ' Forester-Premium', 2, ' a rugged Subaru for off-road enthusiasts', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage5.png', 50, 280000, 3700, ' Cayenne-S', 2, ' an iconic Porsche for a luxurious experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage6.png', 51, 220000, 3000, ' 3-Series-M340i', 2, ' a sporty BMW for dynamic driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage7.png', 52, 190000, 2600, ' Camry-XSE', 2, ' a reliable Toyota for a smooth ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage8.png', 53, 260000, 3500, ' A4-Premium', 2, ' a sophisticated Audi for a stylish journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage9.png', 54, 170000, 2300, ' CR-V-EX', 2, ' a popular Honda for versatile adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage10.png', 55, 310000, 4000, ' CLA-250', 2, ' a luxurious Mercedes for a premium experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage11.png', 56, 240000, 3200, ' Fusion-SE', 2, ' a modern Ford for urban driving', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage12.png', 57, 200000, 2800, ' Sentra-SR', 2, ' a fuel-efficient Nissan for daily commuting', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage13.png', 58, 280000, 3700, ' Model-S-Long-Range', 2, ' an electric Tesla for a sustainable ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage14.png', 59, 220000, 3100, ' Silverado-LT', 2, ' a powerful Chevrolet for tough tasks', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage15.png', 60, 190000, 2600, ' Kona-SEL', 2, ' a compact Hyundai for city exploration', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage16.png', 61, 260000, 3500, ' Macan-S', 2, ' a sporty Porsche for a thrilling drive', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage2.png', 62, 170000, 2300, ' Optima-EX', 2, ' a stylish Kia for a dynamic journey', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage3.png', 63, 310000, 4000, ' S60-Inscription', 2, ' a sleek Volvo for a comfortable and luxurious ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage4.png', 64, 240000, 3200, ' Crosstrek-Limited', 2, ' an adventurous Subaru for off-road enthusiasts', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage5.png', 65, 200000, 2800, ' Grand-Cherokee-Overland', 2, ' a rugged Jeep for outdoor adventures', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage6.png', 66, 280000, 3700, ' CT5-Luxury', 2, ' a Cadillac for a luxurious and smooth ride', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage7.png', 67, 220000, 3100, ' 2500-Tradesman', 2, ' a powerful Ram for heavy-duty tasks', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage8.png', 68, 190000, 2600, ' Range-Rover-HSE', 2, ' an iconic Land Rover for a grand experience', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage9.png', 69, 260000, 3500, ' Countryman-Cooper-S', 2, ' a Mini for a fun and compact drive', NULL);
+INSERT INTO `car` VALUES ('./img/CarImage10.png', 70, 180000, 2400, ' Giulia-Ti', 2, ' an Alfa Romeo for a sporty and stylish journey', NULL);
 
 -- ----------------------------
 -- Table structure for employees
@@ -117,7 +117,7 @@ CREATE TABLE `employees`  (
   `age` int NOT NULL,
   `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`emp_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of employees
@@ -136,12 +136,11 @@ CREATE TABLE `fine`  (
   `lease_id` int NOT NULL,
   `fine_value` int NOT NULL,
   PRIMARY KEY (`lease_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fine
 -- ----------------------------
-INSERT INTO `fine` VALUES (1, 6000);
 
 -- ----------------------------
 -- Table structure for global_time
@@ -153,12 +152,12 @@ CREATE TABLE `global_time`  (
   `global_month` int NOT NULL,
   `global_day` int NOT NULL,
   PRIMARY KEY (`time_global`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of global_time
 -- ----------------------------
-INSERT INTO `global_time` VALUES (0, 2023, 12, 16);
+INSERT INTO `global_time` VALUES (0, 2023, 12, 30);
 
 -- ----------------------------
 -- Table structure for lease
@@ -181,12 +180,11 @@ CREATE TABLE `lease`  (
   CONSTRAINT `lease_car` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `lease_emp` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `lease_usr` FOREIGN KEY (`usr_id`) REFERENCES `user` (`usr_id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of lease
 -- ----------------------------
-INSERT INTO `lease` VALUES (1, 2, 4, 2, 12000, 20231212, 20231215, 20231216, 2);
 
 -- ----------------------------
 -- Table structure for purchase
@@ -206,7 +204,7 @@ CREATE TABLE `purchase`  (
   CONSTRAINT `purchase_car` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `purchase_emp` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `purchase_usr` FOREIGN KEY (`usr_id`) REFERENCES `user` (`usr_id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of purchase
@@ -224,7 +222,7 @@ CREATE TABLE `user`  (
   `password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `creditcard` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`usr_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user

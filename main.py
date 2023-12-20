@@ -7,6 +7,11 @@ from PyQt5 import QtWidgets
 import func, inquire, edit, my_func
 from windows import Login, User_main, User_person, Buy, Lease, Manager_check, Add_car
 
+beautification = False
+if beautification:
+    import qtmodern.styles
+    import qtmodern.windows
+
 
 class SYSU_database():
     def __init__(self):
@@ -31,7 +36,6 @@ class SYSU_database():
         self.lease = Lease(conn)
         self.manager_check = Manager_check(conn)
         self.add_car = Add_car()
-
 
     def login_bind(self):
         self.login.lineEdit_username.setText('1')
@@ -86,6 +90,9 @@ class SYSU_database():
         self.add_car.pushButton_ack.clicked.connect(self.add_car2manager_check)
 
     def login_check(self):
+        if self.login.lineEdit_username.text == '' or self.login.lineEdit_password == '':
+            print('连接失败')
+            return
         self.user_id = int(self.login.lineEdit_username.text())
         username = int(self.login.lineEdit_username.text())
         password = str(self.login.lineEdit_password.text())
@@ -249,15 +256,19 @@ calender = {1:31, 2:29, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 
 app = QtWidgets.QApplication(sys.argv)
 conn = pymysql.connect(host='localhost', user='root', password='DSHdsh0308!', database='sysu_database', port=3306)
 
+if beautification:
+    qtmodern.styles.light(app)
+
 db = SYSU_database()
 db.run()
 
 conn.close()
 sys.exit(app.exec_())
 
-
-
-
+# if beautification:
+#     qtmodern.styles.light(app)
+#     mw = qtmodern.windows.ModernWindow(window)
+#     mw.show()
 
 
 

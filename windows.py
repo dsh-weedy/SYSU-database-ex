@@ -79,7 +79,8 @@ class User_main(QtWidgets.QWidget, Ui_User_main):
                 self.buy_button[i].setEnabled(False)
                 self.lease_button[i].setEnabled(False)
             else:
-                frame = QtGui.QImage('./img/car_default.jpg')
+                img_rt = self.car_list[self.show_index * 6 + i][0]
+                frame = QtGui.QImage(img_rt)
                 pix = QtGui.QPixmap.fromImage(frame).scaled(self.graphics[i].width() - 2,
                                                             self.graphics[i].height() - 2)
                 item = QtWidgets.QGraphicsPixmapItem(pix)
@@ -270,6 +271,8 @@ class Manager_check(QtWidgets.QWidget, Ui_Manager_check):
 
         date = my_func.get_time(conn)
         self.label_time.setText(date[:4] + '/' + date[4:6] + '/' + date[6:])
+        self.pushButton_add.setEnabled(False)
+        self.pushButton_sub.setEnabled(False)
 
     def update_customer(self, conn):
         self.pushButton_add.setEnabled(False)
