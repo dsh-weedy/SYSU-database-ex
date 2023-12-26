@@ -15,6 +15,8 @@ from ui.lease import Ui_Lease
 from ui.manager_check import Ui_Manager_check
 from ui.add_car import Ui_Add_car
 
+car_state = {0: '卖出0', 1: '租出1', 2: '在库1'}
+lease_state = {0: '未开始0', 1: '进行中1', 2: '已结束2', 3: '已逾期3'}
 
 class Login(QtWidgets.QWidget, Ui_Login):
     def __init__(self):
@@ -165,7 +167,7 @@ class User_person(QtWidgets.QWidget, Ui_User_person):
         for i in lease_list:
             tmp = 'id:' + str(i[0]) + '  car_id:' + str(i[2]) + '  emp_id:' + str(i[3]) \
                    + '  rent:' + str(i[4]) + '  ' + str(i[5]) + '-' + str(i[6]) \
-                  + '  return_date:' + str(i[7]) + '  state:' + str(i[8])
+                  + '  re_date:' + str(i[7]) + '  state:' + lease_state[i[8]]
             self.listWidget_2.addItem(tmp)
 
         fine_list = my_func.get_user_finelist(conn, user_id)
@@ -178,7 +180,7 @@ class User_person(QtWidgets.QWidget, Ui_User_person):
         date = int(my_func.get_time(conn))
         if self.listWidget_2.currentRow() == -1: return
         line_list = self.listWidget_2.currentItem().text().split()
-        state = int(line_list[-1].split(':')[1])
+        state = int(line_list[-1].split(':')[1][-1])
         if state == 2: return
         lease_id = int(line_list[0].split(':')[1])
         car_id = int(line_list[1].split(':')[1])
@@ -191,7 +193,7 @@ class User_person(QtWidgets.QWidget, Ui_User_person):
         for i in lease_list:
             tmp = 'id:' + str(i[0]) + '  car_id:' + str(i[2]) + '  emp_id:' + str(i[3]) \
                   + '  rent:' + str(i[4]) + '  ' + str(i[5]) + '-' + str(i[6]) \
-                  + '  return_date:' + str(i[7]) + '  state:' + str(i[8])
+                  + '  re_date:' + str(i[7]) + '  state:' + lease_state[i[8]]
             self.listWidget_2.addItem(tmp)
 
         fine_list = my_func.get_user_finelist(conn, user_id)
@@ -262,7 +264,7 @@ class Manager_check(QtWidgets.QWidget, Ui_Manager_check):
     def __init__(self, conn):
         super().__init__()
         self.setupUi(self)
-        frame = QtGui.QImage('./img/user_default.jpg')
+        frame = QtGui.QImage('./img/default.jpg')
         pix = QtGui.QPixmap.fromImage(frame).scaled(self.graphicsView.width() - 2, self.graphicsView.height() - 2)
         item = QtWidgets.QGraphicsPixmapItem(pix)
         scene = QtWidgets.QGraphicsScene()
@@ -292,7 +294,7 @@ class Manager_check(QtWidgets.QWidget, Ui_Manager_check):
 
         car_list = inquire.inquire_all(conn, 'car')
         for i in car_list:
-            tmp = 'car_id:' + str(i[1]) + '\tstate:' + str(i[5]) + '\tprice:' + str(i[2]) + \
+            tmp = 'car_id:' + str(i[1]) + '\tstate:' + car_state[i[5]] + '\tprice:' + str(i[2]) + \
                   '\trent:' + str(i[3]) + '\tmodel:' + i[4]
             self.listWidget.addItem(QListWidgetItem(tmp))
 
@@ -316,7 +318,7 @@ class Manager_check(QtWidgets.QWidget, Ui_Manager_check):
         for i in lease_list:
             tmp = 'id:' + str(i[0]) + '  user_id:' + str(i[1]) + '  car_id:' + str(i[2]) + '  emp_id:' + str(i[3]) + \
                   '  rent:' + str(i[4]) + '  begin_date:' + str(i[5]) + '  end_date:' + str(i[6]) + \
-                  '  return_date:' + str(i[7]) + '  state:' + str(i[8])
+                  '  re_date:' + str(i[7]) + '  state:' + lease_state[i[8]]
             self.listWidget.addItem(QListWidgetItem(tmp))
 
     def update_fine(self, conn):
